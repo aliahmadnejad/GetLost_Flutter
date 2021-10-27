@@ -63,7 +63,8 @@ class HostelBookingPanelState extends State<HostelBookingPanel> {
     reservation = Reservation(
         hostelId: hostel.hostel.id,
         travelerId: traveler.id,
-        isCheckedIn: false,
+        // isCheckedIn: false, // REMOVE
+        isCheckedOut: false,
         isConfirmed: false);
     postReservation(reservation);
   }

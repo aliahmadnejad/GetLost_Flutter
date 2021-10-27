@@ -13,7 +13,10 @@ class CreateAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
+      ),
       child: Text(
         'Create an Account',
         style: TextStyle(

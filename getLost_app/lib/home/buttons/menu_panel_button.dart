@@ -12,6 +12,9 @@ class MenuPanelButton extends StatelessWidget {
     return Container(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          minimumSize: Size(44, 44),
+          padding: EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
           primary: Color(0xffFBF9F8),
           shape: RoundedRectangleBorder(
             side: BorderSide(color: Color(0xffE9E7E3), width: 0.5),
@@ -26,6 +29,7 @@ class MenuPanelButton extends StatelessWidget {
         child: Icon(
           Icons.more_vert,
           color: Color(0xff9F9F9F),
+          size: 26,
         ),
       ),
     );

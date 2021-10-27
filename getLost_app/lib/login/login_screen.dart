@@ -17,87 +17,108 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(color: Color(0xff9F9F9F)),
+    return GestureDetector(
+      // Tap outside = keyboard close
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: IconButton(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            icon: Icon(Icons.arrow_back_ios_rounded, color: Color(0xff9F9F9F)),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        // backgroundColor: Color(0xff0093B1),
         backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      // backgroundColor: Color(0xff0093B1),
-      backgroundColor: Colors.white,
-      body: BlocProvider<LoginBloc>(
-          create: (context) => LoginBloc(userRepository: _userRepository),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                height: MediaQuery.of(context).size.height * 0.16,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 10),
-                child: Image(
-                  image: AssetImage("assets/images/LogoBlue.png"),
-                  color: Color(0xff9F9F9F),
+        body: BlocProvider<LoginBloc>(
+            create: (context) => LoginBloc(userRepository: _userRepository),
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height * 0.16,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height / 10),
+                  child: Image(
+                    image: AssetImage("assets/images/LogoBlue.png"),
+                    color: Color(0xff7f7f7f),
+                  ),
                 ),
-              ),
-              Container(
-                // decoration: BoxDecoration(
-                //   color: Colors.yellow,
-                //   border: Border.all(color: Colors.black),
-                // ),
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.01),
-                child: LoginForm(userRepository: _userRepository),
-              ),
-              Container(
-                  child: Center(
-                      child: Padding(
-                          padding: EdgeInsets.all(60.0),
-                          // child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.all(30),
-                                padding: EdgeInsets.all(20),
-                                // decoration: BoxDecoration(
-                                //   color: Colors.yellow,
-                                //   border: Border.all(color: Colors.black),
-                                // ),
-                                // alignment: Alignment.bottomCenter,
-                                child: FlatButton(
-                                    child: Text(
-                                      "Forgot Password",
-                                      style: TextStyle(
-                                        color: Color(0xff9F9F9F),
-                                        fontSize:
-                                            MediaQuery.of(context).size.width /
-                                                26,
-                                        fontFamily: "SF-Pro-Regular",
-                                        decoration: TextDecoration.underline,
+                AnimatedPadding(
+                  padding: MediaQuery.of(context).viewInsets,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // decoration: BoxDecoration(
+                    //   color: Colors.yellow,
+                    //   border: Border.all(color: Colors.black),
+                    // ),
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.01),
+                    child: LoginForm(userRepository: _userRepository),
+                  ),
+                ),
+                Container(
+                    child: Center(
+                        child: Padding(
+                            padding: EdgeInsets.all(60.0),
+                            // child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.all(30),
+                                  padding: EdgeInsets.all(20),
+                                  // decoration: BoxDecoration(
+                                  //   color: Colors.yellow,
+                                  //   border: Border.all(color: Colors.black),
+                                  // ),
+                                  // alignment: Alignment.bottomCenter,
+                                  child: TextButton(
+                                      style: ButtonStyle(
+                                        overlayColor: MaterialStateProperty.all(
+                                            Colors.transparent),
                                       ),
-                                    ),
-                                    onPressed: () {}),
-                              ),
-                            ],
-                          ))))
-              // Column(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   crossAxisAlignment: CrossAxisAlignment.end,
-              //   children: <Widget>[
-              //     ClipRRect(
-              //       borderRadius:
-              //           BorderRadius.only(topRight: Radius.circular(150.0)),
-              //       child: Container(
-              //         decoration: BoxDecoration(color: Colors.red),
-              //         height: MediaQuery.of(context).size.height * 0.07,
-              //       ),
-              //     )
-              //   ],
-              // )
-            ],
-          )),
+                                      child: Text(
+                                        "Forgot Password",
+                                        style: TextStyle(
+                                          color: Color(0xff9F9F9F),
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              26,
+                                          fontFamily: "SF-Pro-Regular",
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                      onPressed: () {}),
+                                ),
+                              ],
+                            ))))
+                // Column(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   crossAxisAlignment: CrossAxisAlignment.end,
+                //   children: <Widget>[
+                //     ClipRRect(
+                //       borderRadius:
+                //           BorderRadius.only(topRight: Radius.circular(150.0)),
+                //       child: Container(
+                //         decoration: BoxDecoration(color: Colors.red),
+                //         height: MediaQuery.of(context).size.height * 0.07,
+                //       ),
+                //     )
+                //   ],
+                // )
+              ],
+            )),
+      ),
     );
   }
 }

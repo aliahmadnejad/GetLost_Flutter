@@ -1,47 +1,36 @@
 [ 
   { 
-    "featureType": "landscape.man_made", 
+    "featureType": "administrative.country", 
+    "elementType": "geometry", 
     "stylers": [ 
-      { "color": "#f9f5ec" }, 
-      { "weight": 1 } ] }, 
-      { "featureType": "landscape.man_made", 
-      "elementType": "geometry.stroke", 
-      "stylers": [ { "color": "#dcdcdc" } ] 
-    }, 
-    { "featureType": "poi.park", 
-      "elementType": "geometry.fill", 
-      "stylers": [ { "color": "#c6ebb0" } ] 
-    }, 
-    { "featureType": "poi.school", 
-      "elementType": "geometry.fill", 
-      "stylers": [ { "color": "#c6ebb0" } ] 
+      { "hue": "#ff0000" }, 
+      { "visibility": "simplified" } ] 
       }, 
-      { "featureType": "poi.sports_complex", 
-      "elementType": "geometry.fill", 
-      "stylers": [ { "color": "#c6ebb0" } ] 
+      { "featureType": "poi", 
+      "elementType": "labels.icon", 
+      "stylers": [ { "visibility": "off" } ] 
       }, 
-      { "featureType": "road", 
-      "stylers": [ { "saturation": "0" }, 
-      { "gamma": "1.8" }, { "weight": "1.00" } ] 
+      { "featureType": "poi", 
+      "elementType": "labels.text", 
+      "stylers": [ { "visibility": "off" } ] 
       }, 
-      { "featureType": "road", 
-      "elementType": "geometry.fill", 
-      "stylers": [ { "hue": "#ffb200" } ] 
+      { "featureType": "poi.attraction", 
+      "elementType": "labels", 
+      "stylers": [ { "color": "#919191" }, 
+      { "visibility": "simplified" } ] 
       }, 
-      { "featureType": "road.arterial", 
-      "elementType": "geometry.fill", 
-      "stylers": [ { "lightness": "0" }, 
-      { "gamma": "1" } ] 
+      { "featureType": "poi.government", 
+      "elementType": "labels", 
+      "stylers": [ { "color": "#919191" }, 
+      { "visibility": "simplified" } ] 
       }, 
-      { "featureType": "road.local", 
-      "elementType": "geometry.fill", 
-      "stylers": [ { "color": "#ffffff" }, { "weight": 2 } ]
+      { "featureType": "poi.medical", 
+      "elementType": "labels", 
+      "stylers": [ { "color": "#ff2600" }, 
+      { "visibility": "simplified" } ] 
       }, 
-      { "featureType": "transit.station.airport", 
-      "stylers": [ { "hue": "#b000ff" }, { "saturation": "23" }, 
-      { "lightness": "-4" }, { "gamma": "0.80" } ] 
-      }, 
-      { "featureType": "water", 
-      "stylers": [ { "color": "#a0daf2" } ] 
+      { "featureType": "transit.station", 
+      "elementType": "labels.icon", 
+      "stylers": [ { "visibility": "off" } ] 
   } 
 ]

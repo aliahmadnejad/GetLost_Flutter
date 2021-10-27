@@ -119,6 +119,7 @@ class _LoginFormState extends State<LoginForm> {
                                 child: Column(
                                   children: [
                                     TextFormField(
+                                      textInputAction: TextInputAction.next,
                                       keyboardAppearance: Brightness.light,
                                       controller: _usernameController,
                                       // autofocus: false,
@@ -161,6 +162,7 @@ class _LoginFormState extends State<LoginForm> {
                                     ),
                                     SizedBox(height: 8.0),
                                     TextFormField(
+                                      textInputAction: TextInputAction.done,
                                       keyboardAppearance: Brightness.light,
                                       controller: _passwordController,
                                       style: TextStyle(

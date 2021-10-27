@@ -19,23 +19,24 @@ class Reservation {
   int hostelId;
   int travelerId;
   bool isConfirmed;
-  bool isCheckedIn;
+  // bool isCheckedIn;
+  bool isCheckedOut;
 
   Reservation(
-      {this.hostelId, this.travelerId, this.isConfirmed, this.isCheckedIn});
+      {this.hostelId, this.travelerId, this.isConfirmed, this.isCheckedOut});
 
   factory Reservation.fromDatabaseJson(Map<String, dynamic> data) =>
       Reservation(
         hostelId: data["hostel"],
         travelerId: data["customer"],
         isConfirmed: data['is_confirmed'],
-        isCheckedIn: data['is_checked_in'],
+        isCheckedOut: data['is_checked_out'],
       );
 
   Map<String, dynamic> toDatabaseJson() => {
         "hostel": this.hostelId,
         "customer": this.travelerId,
         "is_confirmed": this.isConfirmed,
-        "is_checked_in": this.isCheckedIn,
+        "is_checked_out": this.isCheckedOut,
       };
 }

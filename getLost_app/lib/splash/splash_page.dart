@@ -9,6 +9,10 @@ class SplashPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(50.0),
           child: Container(
+            alignment: Alignment.center,
+            height: MediaQuery.of(context).size.height * 0.16,
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.all(MediaQuery.of(context).size.height / 35),
             child: Image(
               image: AssetImage("assets/images/LogoBlue.png"),
               color: Colors.white,

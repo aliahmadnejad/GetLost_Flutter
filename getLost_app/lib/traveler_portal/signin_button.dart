@@ -12,7 +12,10 @@ class SigninButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Colors.transparent),
+        ),
         child: Text(
           "Sign In",
           style: TextStyle(

@@ -10,26 +10,50 @@ class RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 25, bottom: 25, left: 80, right: 80),
-      child: OutlineButton(
-        borderSide: BorderSide(
-          width: 2,
-          color: Color(0xff0093B1),
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        onPressed: _onPressed,
-        child: Text(
-          'NeXT',
-          style: TextStyle(
-            color: Color(0xff9F9F9F),
-            fontFamily: "SF-Pro-Regular",
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.only(top: 15, bottom: 15, left: 80, right: 80),
+      child:
+          // OutlinedButton(
+          //   onPressed: _onPressed,
+          //   style: OutlinedButton.styleFrom(
+          //       shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(10.0),
+          //       ),
+          //       side: BorderSide(
+          //         width: 2,
+          //         color: Color(0xff0093B1),
+          //       )),
+          //   child: Text(
+          //     'NeXT',
+          //     style: TextStyle(
+          //       color: Color(0xff9F9F9F),
+          //       fontFamily: "SF-Pro-Regular",
+          //     ),
+          //   ),
+          // )
+          ButtonTheme(
+        height: 30, //MediaQuery.of(context).size.height / 27,
+        child: OutlineButton(
+          padding: EdgeInsets.zero,
+          borderSide: BorderSide(
+            width: 1.2,
+            color: Color(0xff0093B1),
           ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          onPressed: _onPressed,
+          child: Text(
+            'NeXT',
+            style: TextStyle(
+              color: Color(0xff9F9F9F),
+              fontFamily: "SF-Pro-Regular",
+            ),
+          ),
+          // color: Color(0xff0093B1),
+          disabledBorderColor: Color(0xff9F9F9F),
+          // highlightedBorderColor: Colors.red,
         ),
-        // color: Color(0xff0093B1),
-        disabledBorderColor: Color(0xff9F9F9F),
-        // highlightedBorderColor: Colors.red,
       ),
     );
   }

@@ -120,7 +120,6 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: [
         CountryLocalizations.delegate,
       ],
-      // navigatorKey: alice.getNavigatorKey(),
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           print("the state is $state");
@@ -128,15 +127,11 @@ class MyApp extends StatelessWidget {
             return SplashPage();
           }
           if (state is Unauthenticated) {
-            // return LoginScreen(
-            //   userRepository: _userRepository,
-            // );
             return TravelerPortal(
               userRepository: _userRepository,
             );
           }
           if (state is Authenticated) {
-            // print("The State ID is:  ${_userRepository.}")
             return HomePage(
                 name: state.displayName,
                 token: state.userToken,
@@ -145,7 +140,6 @@ class MyApp extends StatelessWidget {
           return Container();
         },
       ),
-      // ),
     );
   }
 }

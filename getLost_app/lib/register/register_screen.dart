@@ -15,17 +15,27 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(color: Color(0xff9F9F9F)),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: IconButton(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            icon: Icon(Icons.arrow_back_ios_rounded, color: Color(0xff9F9F9F)),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
         backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      backgroundColor: Colors.white,
-      body: Center(
-        child: BlocProvider<RegisterBloc>(
-          create: (context) => RegisterBloc(userRepository: _userRepository),
-          child: RegisterForm(),
+        body: Center(
+          child: BlocProvider<RegisterBloc>(
+            create: (context) => RegisterBloc(userRepository: _userRepository),
+            child: RegisterForm(),
+          ),
         ),
       ),
     );

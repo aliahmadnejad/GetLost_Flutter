@@ -27,7 +27,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   bool get isPopulated =>
       _firstNameController.text.isNotEmpty &&
-      _middleNameController.text.isNotEmpty &&
+      // _middleNameController.text.isNotEmpty &&
       _lastNameController.text.isNotEmpty &&
       // _userNameController.text.isNotEmpty &&
       _emailController.text.isNotEmpty &&
@@ -141,6 +141,8 @@ class _RegisterFormState extends State<RegisterForm> {
                         // -----------------------------------------------------------
                         // -----------------------------------------------------------
                         TextFormField(
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.words,
                           keyboardAppearance: Brightness.light,
                           controller: _firstNameController,
                           style: TextStyle(
@@ -177,6 +179,8 @@ class _RegisterFormState extends State<RegisterForm> {
                         ),
                         SizedBox(height: 8.0),
                         TextFormField(
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.words,
                           keyboardAppearance: Brightness.light,
                           controller: _middleNameController,
                           style: TextStyle(
@@ -213,6 +217,8 @@ class _RegisterFormState extends State<RegisterForm> {
                         ),
                         SizedBox(height: 8.0),
                         TextFormField(
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.words,
                           keyboardAppearance: Brightness.light,
                           controller: _lastNameController,
                           style: TextStyle(
@@ -258,43 +264,8 @@ class _RegisterFormState extends State<RegisterForm> {
                     padding: EdgeInsets.only(left: 20, right: 20),
                     child: Column(
                       children: <Widget>[
-                        // TextFormField(
-                        //   keyboardAppearance: Brightness.light,
-                        //   controller: _userNameController,
-                        //   style: TextStyle(
-                        //       color: Color(0xff9F9F9F),
-                        //       fontFamily: "SF-Pro-Regular",
-                        //       fontSize: MediaQuery.of(context).size.width / 30),
-                        //   decoration: InputDecoration(
-                        //     // labelText: 'Username',
-                        //     hintText: 'Username',
-                        //     hintStyle: TextStyle(
-                        //         color: Color(0xff9F9F9F),
-                        //         fontFamily: "SF-Pro-Regular",
-                        //         fontSize:
-                        //             MediaQuery.of(context).size.width / 30),
-                        //     isDense: true,
-                        //     contentPadding: EdgeInsets.symmetric(
-                        //         vertical: 8.0, horizontal: 10.0),
-                        //     focusedBorder: OutlineInputBorder(
-                        //         borderSide: BorderSide(
-                        //             width: 2, color: Color(0xff0093B1))),
-                        //     border: OutlineInputBorder(
-                        //       borderRadius: BorderRadius.circular(5.0),
-                        //       borderSide: BorderSide(),
-                        //     ),
-                        //   ),
-                        //   keyboardType: TextInputType.text,
-                        //   autocorrect: false,
-                        //   autovalidateMode: AutovalidateMode.always,
-                        //   validator: (_) {
-                        //     return !state.isUsernameValid
-                        //         ? 'Invalid Username'
-                        //         : null;
-                        //   },
-                        // ),
-                        // SizedBox(height: 8.0),
                         TextFormField(
+                          textInputAction: TextInputAction.next,
                           keyboardAppearance: Brightness.light,
                           controller: _emailController,
                           style: TextStyle(
@@ -337,6 +308,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         // -----------------------------------------------------------
                         // -----------------------------------------------------------
                         TextFormField(
+                          textInputAction: TextInputAction.next,
                           keyboardAppearance: Brightness.light,
                           controller: _confirmEmailController,
                           style: TextStyle(
@@ -397,6 +369,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     child: Column(
                       children: <Widget>[
                         TextFormField(
+                          textInputAction: TextInputAction.next,
                           keyboardAppearance: Brightness.light,
                           controller: _passwordController,
                           style: TextStyle(
@@ -449,6 +422,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         // -----------------------------------------------------------
                         // -----------------------------------------------------------
                         TextFormField(
+                          textInputAction: TextInputAction.done,
                           keyboardAppearance: Brightness.light,
                           controller: _confirmPasswordController,
                           style: TextStyle(
@@ -500,197 +474,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       ],
                     ),
                   ),
-
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // ADDED FIELDS YOU NEED TO ADD TO DATABASE (FIRST, MIDDLE,
-                  // // AND LAST NAME)
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // TextFormField(
-                  //   // controller: _userNameController,
-                  //   decoration: InputDecoration(
-                  //       icon: Icon(Icons.person),
-                  //       labelText: 'First Name',
-                  //       labelStyle: TextStyle(color: Colors.black),
-                  //       enabledBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black)),
-                  //       focusedBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black))),
-                  //   keyboardType: TextInputType.text,
-                  //   autocorrect: false,
-                  //   // autovalidateMode: AutovalidateMode.always,
-                  //   // validator: (_) {
-                  //   //   return !state.isUsernameValid ? 'Invalid Username' : null;
-                  //   // },
-                  // ),
-                  // TextFormField(
-                  //   decoration: InputDecoration(
-                  //       icon: Icon(Icons.person),
-                  //       labelText: 'Middle Name',
-                  //       labelStyle: TextStyle(color: Colors.black),
-                  //       enabledBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black)),
-                  //       focusedBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black))),
-                  //   keyboardType: TextInputType.text,
-                  //   autocorrect: false,
-                  // ),
-                  // TextFormField(
-                  //   decoration: InputDecoration(
-                  //       icon: Icon(Icons.person),
-                  //       labelText: 'Last Name',
-                  //       labelStyle: TextStyle(color: Colors.black),
-                  //       enabledBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black)),
-                  //       focusedBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black))),
-                  //   keyboardType: TextInputType.text,
-                  //   autocorrect: false,
-                  // ),
-                  // // TextFormField(
-                  // //   controller: _firstNameController,
-                  // //   decoration: InputDecoration(
-                  // //     icon: Icon(Icons.person_outline),
-                  // //     labelText: 'First Name',
-                  // //   ),
-                  // //   keyboardType: TextInputType.text,
-                  // //   autocorrect: false,
-                  // //   autovalidate: true,
-                  // //   validator: (_) {
-                  // //     return !state.isFirstNameValid
-                  // //         ? 'Invalid First Name'
-                  // //         : null;
-                  // //   },
-                  // // ),
-                  // // TextFormField(
-                  // //   controller: _lastNameController,
-                  // //   decoration: InputDecoration(
-                  // //     icon: Icon(Icons.person_outline),
-                  // //     labelText: 'Last Name',
-                  // //   ),
-                  // //   keyboardType: TextInputType.text,
-                  // //   autocorrect: false,
-                  // //   autovalidate: true,
-                  // //   validator: (_) {
-                  // //     return !state.isLastNameValid
-                  // //         ? 'Invalid Last Name'
-                  // //         : null;
-                  // //   },
-                  // // ),
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // TextFormField(
-                  //   controller: _userNameController,
-                  //   decoration: InputDecoration(
-                  //       icon: Icon(Icons.person),
-                  //       labelText: 'Username',
-                  //       labelStyle: TextStyle(color: Colors.black),
-                  //       enabledBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black)),
-                  //       focusedBorder: UnderlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.black))),
-                  //   keyboardType: TextInputType.text,
-                  //   autocorrect: false,
-                  //   autovalidateMode: AutovalidateMode.always,
-                  //   validator: (_) {
-                  //     return !state.isUsernameValid ? 'Invalid Username' : null;
-                  //   },
-                  // ),
-                  // TextFormField(
-                  //   controller: _emailController,
-                  //   decoration: InputDecoration(
-                  //     icon: Icon(Icons.email),
-                  //     labelText: 'Email',
-                  //   ),
-                  //   keyboardType: TextInputType.emailAddress,
-                  //   autocorrect: false,
-                  //   autovalidateMode: AutovalidateMode.always,
-                  //   validator: (_) {
-                  //     return !state.isEmailValid ? 'Invalid Email' : null;
-                  //   },
-                  // ),
-                  // // -----------------------------------------------------------
-                  // // ADDED FIELDS --------------- CONFIRM EMAIL
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // TextFormField(
-                  //   // controller: _emailController,
-                  //   decoration: InputDecoration(
-                  //     icon: Icon(Icons.email),
-                  //     labelText: 'Confirm Email',
-                  //   ),
-                  //   keyboardType: TextInputType.emailAddress,
-                  //   autocorrect: false,
-                  //   autovalidateMode: AutovalidateMode.always,
-                  //   validator: (_) {
-                  //     return !state.isEmailValid ? 'Invalid Email' : null;
-                  //   },
-                  // ),
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // TextFormField(
-                  //   controller: _passwordController,
-                  //   decoration: InputDecoration(
-                  //     icon: Icon(Icons.lock),
-                  //     labelText: 'Password',
-                  //     suffixIcon: IconButton(
-                  //         icon: passwordVisible
-                  //             ? Icon(Icons.visibility)
-                  //             : Icon(Icons.visibility_off),
-                  //         color: Theme.of(context).primaryColorDark,
-                  //         onPressed: () {
-                  //           setState(() {
-                  //             passwordVisible = !passwordVisible;
-                  //           });
-                  //         }),
-                  //   ),
-                  //   obscureText: passwordVisible,
-                  //   autocorrect: false,
-                  //   autovalidateMode: AutovalidateMode.always,
-                  //   validator: (_) {
-                  //     return !state.isPasswordValid ? 'Invalid Password' : null;
-                  //   },
-                  // ),
-                  // // -----------------------------------------------------------
-                  // // ADDED FIELDS --------------- CONFIRM PASSWORD
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // TextFormField(
-                  //   // controller: _passwordController,
-                  //   decoration: InputDecoration(
-                  //     icon: Icon(Icons.lock),
-                  //     labelText: 'Confirm Password',
-                  //     suffixIcon: IconButton(
-                  //         icon: passwordVisible
-                  //             ? Icon(Icons.visibility)
-                  //             : Icon(Icons.visibility_off),
-                  //         color: Theme.of(context).primaryColorDark,
-                  //         onPressed: () {
-                  //           setState(() {
-                  //             passwordVisible = !passwordVisible;
-                  //           });
-                  //         }),
-                  //   ),
-                  //   obscureText: passwordVisible,
-                  //   autocorrect: false,
-                  //   autovalidateMode: AutovalidateMode.always,
-                  //   validator: (_) {
-                  //     return !state.isPasswordValid ? 'Invalid Password' : null;
-                  //   },
-                  // ),
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-                  // // -----------------------------------------------------------
-
                   SizedBox(
                     height: 25.0,
                   ),

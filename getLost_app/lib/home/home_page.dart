@@ -398,201 +398,196 @@ class _HomeState extends State<HomePage> {
                   ),
                 ),
               ),
-              body: Scaffold(
-                extendBodyBehindAppBar: true,
-                appBar: AppBar(
-                  automaticallyImplyLeading: false,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0.0,
-                  actions: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20.0),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Row(
-                          children: [
-                            HostelListButton(
-                              onPressed: () {
-                                if (_panelController.isPanelClosed) {
-                                  _panelController.open();
-                                } else {
-                                  _panelController.close();
-                                }
-                              },
-                            ),
-                            MenuPanelButton(
-                              onPressed: () {
-                                // openDialog("Warning", "You Suck", "Bye", context);
-
-                                applicationBloc.setSettingsPage2("menu");
-                                if (_panelController3.isPanelClosed) {
-                                  _panelController3.open();
-                                } else {
-                                  _panelController3.close();
-                                }
-                              },
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                body: Stack(children: <Widget>[
-                  (applicationBloc.currentLocation == null)
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : GoogleMap(
-                          onMapCreated: _onMapCreated,
-                          zoomGesturesEnabled: true,
-                          mapType: MapType.normal,
-                          myLocationButtonEnabled: false,
-                          myLocationEnabled: true,
-                          zoomControlsEnabled: true,
-                          scrollGesturesEnabled: true,
-                          compassEnabled: true,
-                          initialCameraPosition: CameraPosition(
-                              target: LatLng(
-                                  applicationBloc.currentLocation.latitude,
-                                  applicationBloc.currentLocation.longitude),
-                              zoom: 14),
-                          //getUserLocation(),
-                          // CameraPosition(target: _initialCameraPosition, zoom: 3),
-                          markers: Set<Marker>.of(markers.values),
-                          onCameraIdle: () async {
-                            setState(() {
-                              checkMarkers(markers, _controller);
-                              listHostel(
-                                  markers, _controller, listOfHostelDetails);
-                            });
-                          },
-                        ),
-                  Positioned(
-                      bottom: 30,
-                      right: 20,
-                      left: 20,
-                      child: Visibility(
-                        visible: _searchBarVisible,
-                        child: Container(
-                          height: 40,
-                          padding: EdgeInsets.only(bottom: 0, top: 0),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black38,
-                                blurRadius: 6.0, // soften the shadow
-                                spreadRadius: 2.0, //extend the shadow
-                                offset: Offset(
-                                  0.0, // Move to right 10  horizontally
-                                  5.0, // Move to bottom 10 Vertically
-                                ),
-                              ),
-                            ],
-                            color: Colors.white,
-                            border: Border.all(
-                                color: Color(0xffE9E7E3), width: 1.5),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
+              body: GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: Scaffold(
+                  resizeToAvoidBottomInset: false,
+                  extendBodyBehindAppBar: true,
+                  appBar: AppBar(
+                    automaticallyImplyLeading: false,
+                    backgroundColor: Colors.transparent,
+                    elevation: 0.0,
+                    actions: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
                           child: Row(
-                            children: <Widget>[
-                              IconButton(
-                                padding: EdgeInsets.only(
-                                    top: 0, bottom: 0, left: 2, right: 2),
-                                splashColor: Colors.grey,
-                                icon: Icon(
-                                  Icons.search,
-                                  color: Color(0xff9F9F9F),
-                                  size: 20,
-                                ),
+                            children: [
+                              HostelListButton(
                                 onPressed: () {
-                                  // searchAndNavigate(
-                                  //     searchAddress, _controller2);
+                                  if (_panelController.isPanelClosed) {
+                                    _panelController.open();
+                                  } else {
+                                    _panelController.close();
+                                  }
                                 },
                               ),
-                              Expanded(
-                                child: TextButton(
-                                  onPressed: () {
-                                    print("Search button pressed");
-                                    applicationBloc
-                                        .clearSelectedLocation(); //maybe delete - using this as onTap call for search bar
-                                    // searchFocusNode.requestFocus();
-                                    if (_panelController4.isPanelClosed) {
-                                      _panelController4.open();
-                                    } else {
-                                      _panelController4.close();
-                                    }
-                                  },
-                                  child: searchBarText(searchAddress),
-                                  style: TextButton.styleFrom(
-                                    primary: Color(0xff9F9F9F),
-                                    textStyle: TextStyle(
-                                        // color: Color(0xff9F9F9F),
-                                        fontFamily: "SF-Pro-Regular",
-                                        fontSize:
-                                            MediaQuery.of(context).size.width /
-                                                24),
-                                    padding:
-                                        EdgeInsets.only(top: 5.0, bottom: 5.0),
+                              MenuPanelButton(
+                                onPressed: () {
+                                  // openDialog("Warning", "You Suck", "Bye", context);
+
+                                  applicationBloc.setSettingsPage2("menu");
+                                  if (_panelController3.isPanelClosed) {
+                                    _panelController3.open();
+                                  } else {
+                                    _panelController3.close();
+                                  }
+                                },
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  body: Stack(children: <Widget>[
+                    (applicationBloc.currentLocation == null)
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : GoogleMap(
+                            onMapCreated: _onMapCreated,
+                            zoomGesturesEnabled: true,
+                            mapType: MapType.normal,
+                            myLocationButtonEnabled: false,
+                            myLocationEnabled: true,
+                            zoomControlsEnabled: true,
+                            scrollGesturesEnabled: true,
+                            compassEnabled: true,
+                            initialCameraPosition: CameraPosition(
+                                target: LatLng(
+                                    applicationBloc.currentLocation.latitude,
+                                    applicationBloc.currentLocation.longitude),
+                                zoom: 14),
+                            //getUserLocation(),
+                            // CameraPosition(target: _initialCameraPosition, zoom: 3),
+                            markers: Set<Marker>.of(markers.values),
+                            onCameraIdle: () async {
+                              setState(() {
+                                checkMarkers(markers, _controller);
+                                listHostel(
+                                    markers, _controller, listOfHostelDetails);
+                              });
+                            },
+                          ),
+                    Positioned(
+                        bottom: 30,
+                        right: 20,
+                        left: 20,
+                        child: Visibility(
+                          visible: _searchBarVisible,
+                          child: Container(
+                            height: 40,
+                            padding: EdgeInsets.only(bottom: 0, top: 0),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 6.0, // soften the shadow
+                                  spreadRadius: 2.0, //extend the shadow
+                                  offset: Offset(
+                                    0.0, // Move to right 10  horizontally
+                                    5.0, // Move to bottom 10 Vertically
                                   ),
                                 ),
-
-                                // TextField(
-                                //   keyboardAppearance: Brightness.light,
-                                //   controller: _searchController,
-                                //   textInputAction: TextInputAction.search,
-                                //   cursorColor: Color(0xff9F9F9F),
-                                //   // keyboardType: TextInputType.text,
-                                //   // textInputAction: TextInputAction.go,
-                                //   decoration: InputDecoration(
-                                //     border: InputBorder.none,
-                                //     focusedBorder: InputBorder.none,
-                                //     contentPadding: EdgeInsets.only(
-                                //         top: 10,
-                                //         bottom: 8,
-                                //         left: 10,
-                                //         right: 10),
-                                //     // EdgeInsets.symmetric(horizontal: 1),
-                                //     hintText: "Search for a hostel or address",
-                                //     hintStyle: TextStyle(
-                                //         color: Color(0xff9F9F9F),
-                                //         fontFamily: "SF-Pro-Regular",
-                                //         fontSize:
-                                //             MediaQuery.of(context).size.width /
-                                //                 26),
-                                //   ),
-                                //   onSubmitted: (val) {
-                                //     //   setState(() {
-                                //     //     searchAddress = val;
-                                //     //   });
-                                //     searchAndNavigate(
-                                //         searchAddress, _controller2);
-                                //   },
-                                //   onChanged: (val) {
-                                //     setState(() {
-                                //       searchAddress = val;
-                                //     });
-                                //   },
-                                // ),
-                              ),
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 4.0),
+                              ],
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0xfff2f0ed), width: 1.5),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 30,
+                                  // decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.green)),
+                                  child: IconButton(
+                                    padding: EdgeInsets.only(
+                                        top: 0, bottom: 0, left: 2, right: 0),
+                                    splashColor: Colors.grey,
+                                    icon: Icon(
+                                      Icons.search,
+                                      color: Color(0xff9F9F9F),
+                                      size: 24,
+                                    ),
+                                    onPressed: () {
+                                      // searchAndNavigate(
+                                      //     searchAddress, _controller2);
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      print("Search button pressed");
+                                      applicationBloc
+                                          .clearSelectedLocation(); //maybe delete - using this as onTap call for search bar
+                                      // searchFocusNode.requestFocus();
+                                      if (_panelController4.isPanelClosed) {
+                                        searchFocusNode.requestFocus();
+                                        // _panelController4.open();
+                                        _panelController4
+                                            .animatePanelToPosition(1.0,
+                                                duration:
+                                                    Duration(milliseconds: 500),
+                                                curve: Curves.linear);
+                                      } else {
+                                        searchFocusNode.unfocus();
+                                        // _panelController4.close();
+                                        _panelController4
+                                            .animatePanelToPosition(0.0,
+                                                duration:
+                                                    Duration(milliseconds: 500),
+                                                curve: Curves.linear);
+                                      }
+                                    },
+                                    child: searchBarText(searchAddress),
+                                    style: TextButton.styleFrom(
+                                      // side: BorderSide(color: Colors.black),
+                                      primary: Color(0xff9F9F9F),
+                                      textStyle: TextStyle(
+                                          // color: Color(0xff9F9F9F),
+                                          fontFamily: "SF-Pro-Regular",
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              24),
+                                      alignment: Alignment.centerLeft,
+                                      padding: EdgeInsets.only(
+                                          top: 5.0,
+                                          bottom: 5.0,
+                                          left: 4,
+                                          right: 0),
+                                    ),
+                                  ),
+                                ),
+                                // Spacer(),
+                                Container(
+                                  // decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.blue)),
                                   child: IconButton(
                                     padding: EdgeInsets.only(bottom: 1, top: 4),
-                                    icon: Icon(Icons.near_me),
-                                    color: Color(0xff0093B1),
+                                    icon: Icon(
+                                      Icons.near_me,
+                                      size: 26,
+                                    ),
+                                    color: Color(0xff337bf6),
                                     onPressed: () async {
                                       print("location button pressed");
                                       applicationBloc
                                           .updateCurrentLocation(_controller2);
                                       // await getUserLocation();
                                     },
-                                  )),
-                            ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      )),
-                ]),
+                        )),
+                  ]),
+                ),
               ),
             ),
             SlidingUpPanel(
@@ -617,15 +612,17 @@ class _HomeState extends State<HomePage> {
                 child: Stack(
                   children: <Widget>[
                     Container(
+                      // decoration: BoxDecoration(
+                      //     border: Border.all(color: Colors.black)),
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 5.0),
+                        padding: const EdgeInsets.all(0),
                         child: Row(
                           children: <Widget>[
                             const Spacer(),
                             Expanded(
                                 child: Transform.translate(
-                              offset: Offset(0.0, -10.0),
+                              offset: Offset(0.0, -18.0),
                               child: Center(
                                   child: Icon(
                                 Icons.horizontal_rule_rounded,
@@ -633,119 +630,131 @@ class _HomeState extends State<HomePage> {
                                 size: 50,
                               )),
                             )),
-                            Expanded(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: ButtonTheme(
-                                  padding: EdgeInsets.only(right: 0),
-                                  child: FlatButton(
-                                    height: 25,
-                                    minWidth: 25,
-                                    onPressed: () {
-                                      print("panel controller 4 close button");
-                                      _panelController4.close();
-                                    },
-                                    child: Icon(
-                                      Icons.close_rounded,
-                                      color: Color(0xff707070),
-                                      size: 20.0,
-                                    ),
-                                    // padding: EdgeInsets.all(0.0),
-                                    shape: CircleBorder(),
-                                    color: Color(0xffECEBE9),
-                                  ),
-                                ),
-                              ),
-                            )
+                            const Spacer()
                           ],
                         ),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 12, right: 14, top: 50),
-                      width: MediaQuery.of(context).size.width,
-                      child: Container(
-                        height: 40,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(bottom: 0, top: 0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border:
-                              Border.all(color: Color(0xffE9E7E3), width: 1.5),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 0.0),
+                          padding:
+                              const EdgeInsets.only(top: 10, left: 5, right: 5),
                           child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(right: 4.0),
-                                child: IconButton(
-                                  padding: EdgeInsets.only(
-                                      top: 0, bottom: 0, left: 2, right: 2),
-                                  splashColor: Colors.grey,
-                                  icon: Icon(
-                                    Icons.search,
-                                    color: Color(0xff9F9F9F),
-                                    size: 20,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 40,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          color: Color(0xffE9E7E3), width: 1.5),
+                                      borderRadius: BorderRadius.circular(8.0)),
+                                  child: Row(
+                                    children: [
+                                      IconButton(
+                                          padding: EdgeInsets.only(
+                                              top: 0,
+                                              bottom: 0,
+                                              left: 2,
+                                              right: 2),
+                                          splashColor: Colors.grey,
+                                          icon: Icon(
+                                            Icons.search,
+                                            color: Color(0xff9F9F9F),
+                                            size: 20,
+                                          ),
+                                          onPressed: () {
+                                            searchAndNavigate(
+                                                searchAddress, _controller2);
+                                          }),
+                                      Expanded(
+                                        child: TextField(
+                                          focusNode: searchFocusNode,
+                                          keyboardAppearance: Brightness.light,
+                                          controller: _searchController,
+                                          textInputAction:
+                                              TextInputAction.search,
+                                          cursorColor: Color(0xff9F9F9F),
+                                          // keyboardType: TextInputType.text,
+                                          // textInputAction: TextInputAction.go,
+                                          style: TextStyle(
+                                              color: Color(0xff9F9F9F),
+                                              fontFamily: "SF-Pro-Regular",
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  26),
+                                          decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            contentPadding: EdgeInsets.only(
+                                                top: 0,
+                                                bottom: 10,
+                                                left: 2,
+                                                right: 4),
+                                            // EdgeInsets.symmetric(horizontal: 1),
+                                            hintText:
+                                                "Search for a hostel or address",
+                                            hintStyle: TextStyle(
+                                                color: Color(0xff9F9F9F),
+                                                fontFamily: "SF-Pro-Regular",
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    26),
+                                          ),
+                                          onSubmitted: (val) {
+                                            //   setState(() {
+                                            //     searchAddress = val;
+                                            //   });
+                                            searchFocusNode.unfocus();
+                                            // _panelController4.close();
+                                            _panelController4
+                                                .animatePanelToPosition(0.0,
+                                                    duration: Duration(
+                                                        milliseconds: 500),
+                                                    curve: Curves.linear);
+                                            searchAndNavigate(
+                                                searchAddress, _controller2);
+                                            applicationBloc
+                                                .clearSelectedLocation();
+                                          },
+                                          onChanged: (val) {
+                                            applicationBloc.searchPlaces(val);
+                                            setState(() {
+                                              searchAddress = val;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    searchAndNavigate(
-                                        searchAddress, _controller2);
-                                  },
                                 ),
                               ),
-                              Expanded(
-                                child: TextField(
-                                  focusNode: searchFocusNode,
-                                  keyboardAppearance: Brightness.light,
-                                  controller: _searchController,
-                                  textInputAction: TextInputAction.search,
-                                  cursorColor: Color(0xff9F9F9F),
-                                  // keyboardType: TextInputType.text,
-                                  // textInputAction: TextInputAction.go,
-                                  style: TextStyle(
-                                      color: Color(0xff9F9F9F),
-                                      fontFamily: "SF-Pro-Regular",
-                                      fontSize:
-                                          MediaQuery.of(context).size.width /
-                                              26),
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    contentPadding: EdgeInsets.only(
-                                        top: 0, bottom: 10, left: 2, right: 4),
-                                    // EdgeInsets.symmetric(horizontal: 1),
-                                    hintText: "Search for a hostel or address",
-                                    hintStyle: TextStyle(
-                                        color: Color(0xff9F9F9F),
-                                        fontFamily: "SF-Pro-Regular",
-                                        fontSize:
-                                            MediaQuery.of(context).size.width /
-                                                26),
-                                  ),
-                                  onSubmitted: (val) {
-                                    //   setState(() {
-                                    //     searchAddress = val;
-                                    //   });
-                                    _panelController4.close();
-                                    searchAndNavigate(
-                                        searchAddress, _controller2);
-                                    applicationBloc.clearSelectedLocation();
-                                  },
-                                  onChanged: (val) {
-                                    applicationBloc.searchPlaces(val);
-                                    setState(() {
-                                      searchAddress = val;
-                                    });
-                                  },
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  shape: CircleBorder(),
+                                  backgroundColor: Color(0xffECEBE9),
+                                  minimumSize: Size(25, 25),
+                                ),
+                                onPressed: () {
+                                  searchFocusNode.unfocus();
+                                  // _panelController4.close();
+                                  _panelController4.animatePanelToPosition(0.0,
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.linear);
+                                },
+                                child: Icon(
+                                  Icons.close_rounded,
+                                  color: Color(0xff707070),
+                                  size: 20.0,
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    ),
+                        )),
                   ],
                 ),
               ),
@@ -961,7 +970,11 @@ class _HomeState extends State<HomePage> {
                                 ),
                               ),
                               onTap: () {
-                                _panelController4.close();
+                                searchFocusNode.unfocus();
+                                // _panelController4.close();
+                                _panelController4.animatePanelToPosition(0.0,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.linear);
                                 applicationBloc.setSelectedLocation(
                                     applicationBloc
                                         .searchResults[index].placeId);

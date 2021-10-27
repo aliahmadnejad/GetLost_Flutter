@@ -53,7 +53,11 @@ class TravelerPortal extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    child: FlatButton(
+                    child: TextButton(
+                        style: ButtonStyle(
+                          overlayColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,7 +92,11 @@ class TravelerPortal extends StatelessWidget {
                         }),
                   ),
                   Container(
-                    child: FlatButton(
+                    child: TextButton(
+                        style: ButtonStyle(
+                          overlayColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -139,32 +147,8 @@ class TravelerPortal extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.all(30),
                               padding: EdgeInsets.all(20),
-                              // decoration: BoxDecoration(
-                              //   color: Colors.yellow,
-                              //   border: Border.all(color: Colors.black),
-                              // ),
-                              // alignment: Alignment.bottomCenter,
                               child:
                                   SigninButton(userRepository: _userRepository),
-                              // FlatButton(
-                              //     child: Text(
-                              //       "Sign In",
-                              //       style: TextStyle(
-                              //         color: Colors.white,
-                              //         fontSize:
-                              //             MediaQuery.of(context).size.width /
-                              //                 26,
-                              //         fontFamily: "SF-Pro-Bold",
-                              //         decoration: TextDecoration.underline,
-                              //       ),
-                              //     ),
-                              //     onPressed: () {
-                              //       Navigator.of(context).push(
-                              //           MaterialPageRoute(builder: (context) {
-                              //         return LoginScreen(
-                              //             userRepository: _userRepository);
-                              //       }));
-                              //     }),
                             ),
                           ],
                         ))))

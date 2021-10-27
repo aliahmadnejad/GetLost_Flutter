@@ -10,8 +10,14 @@ class HostelListButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      padding: EdgeInsets.all(0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          minimumSize: Size(44, 44),
+          padding: EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
+          // tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           primary: Color(0xffFBF9F8),
           shape: RoundedRectangleBorder(
             side: BorderSide(
@@ -26,9 +32,13 @@ class HostelListButton extends StatelessWidget {
           ),
         ),
         onPressed: _onPressed,
-        child: Icon(
-          Icons.menu,
-          color: Color(0xff9F9F9F),
+        child: Container(
+          // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+          child: Icon(
+            Icons.list_rounded,
+            color: Color(0xff9F9F9F),
+            size: 28,
+          ),
         ),
       ),
     );
